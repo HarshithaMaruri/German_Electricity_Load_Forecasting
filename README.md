@@ -1,221 +1,181 @@
-\# German Electricity Load Forecasting
+# German Electricity Load Forecasting using Time Series and Machine Learning
 
+## Project Overview
 
+This project was completed as part of a Time Series Modelling coursework. The objective is to forecast German electricity demand using statistical time-series methods, machine learning, and deep learning techniques.
 
-\## Project Overview
+The project compares multiple forecasting approaches including:
 
+- Seasonal Naïve Forecast
+- SARIMA
+- SARIMAX (using Berlin temperature as an exogenous variable)
+- Random Forest Regression
+- Long Short-Term Memory (LSTM) Neural Network
 
+Model performance is evaluated using standard forecasting metrics and visual comparison of predictions against actual electricity demand.
 
-This project investigates electricity load forecasting for Germany using multiple forecasting approaches. The study compares statistical, machine learning and deep learning models on historical electricity demand data.
+---
 
-
-
-The project was completed as part of an MSc Data Science forecasting assignment.
-
-
-
-\---
-
-
-
-\## Objectives
-
-
-
-\- Forecast German electricity load
-
-\- Compare multiple forecasting approaches
-
-\- Evaluate forecast accuracy using standard metrics
-
-\- Analyse the effect of weather (temperature) as an exogenous variable
-
-
-
-\---
-
-
-
-\## Dataset
-
-The hourly electricity dataset (time_series_60min_singleindex.csv) exceeds GitHub's web upload limit (25 MB) and is therefore not included in this repository.
-
-It can be downloaded from the Open Power System Data project:
-https://data.open-power-system-data.org/time_series/
-
-Electricity Load:
-
-\- ENTSOE Transparency Platform
-
-\- Hourly German electricity demand (2015–2020)
-
-
-
-Temperature:
-
-\- Open-Meteo Archive API
-
-\- Daily Berlin temperature
-
-
-
-\---
-
-
-
-\## Models Implemented
-
-
-
-\### Part 1
-
-Seasonal Naive Benchmark
-
-
-
-\### Part 2
-
-SARIMA
-
-
-
-\### Part 3
-
-SARIMAX (Temperature as Exogenous Variable)
-
-
-
-\### Part 4
-
-Random Forest Regressor
-
-
-
-\### Part 5
-
-LSTM Neural Network
-
-
-
-\---
-
-
-
-\## Evaluation Metrics
-
-
-
-\- RMSE
-
-\- MAE
-
-\- R² Score
-
-
-
-\---
-
-
-
-\## Repository Structure
-
-
+## Repository Structure
 
 ```
-
-german-load-forecasting/
-
+time_series_modelling_case_study/
 │
-
 ├── data/
-
-├── figures/
-
-├── notebook/
-
-├── report/
-
-├── saved\_models/
-
+│   └── berlin_temperature_daily.csv
 │
-
+├── figures/
+│   ├── seasonal_naive_forecast.png
+│   ├── sarima_forecast.png
+│   ├── sarimax_forecast.png
+│   ├── random_forest_forecast.png
+│   └── lstm_forecast.png
+│
+├── notebook/
+│   └── time_series_modelling_case_study.ipynb
+│
+├── saved_models/
+│   ├── sarimax_model.pkl
+│   ├── random_forest_model.joblib
+│   └── lstm_model.keras
+│
 ├── README.md
-
+├── LICENSE
 ├── requirements.txt
-
-├── .gitignore
-
-└── LICENSE
-
+└── .gitignore
 ```
 
+---
 
+## Dataset
 
-\---
+### Electricity Load
 
+- German electricity load (hourly resolution)
+- Source: Open Power System Data (OPSD)
 
+### Weather Data
 
-\## Technologies Used
+- Daily Berlin temperature
+- Source: Open-Meteo Historical Weather API
 
+Temperature data is used as an exogenous variable in the SARIMAX model.
 
+**Note:** The original hourly electricity dataset is not included because it exceeds GitHub's upload size limit. Users should download it separately before running the notebook.
 
-\- Python
+---
 
-\- Pandas
+## Methods Implemented
 
-\- NumPy
+### 1. Seasonal Naïve Forecast
 
-\- Matplotlib
+A simple baseline model using historical seasonal observations.
 
-\- Scikit-learn
+### 2. SARIMA
 
-\- Statsmodels
+Seasonal AutoRegressive Integrated Moving Average model for weekly electricity demand forecasting.
 
-\- TensorFlow
+### 3. SARIMAX
 
-\- Keras
+SARIMA extended with weekly Berlin temperature as an exogenous predictor.
 
+### 4. Random Forest
 
+Feature-based regression model trained on weekly electricity demand and explanatory variables.
 
-\---
+### 5. LSTM
 
+Deep learning model trained using hourly electricity demand sequences to forecast the final two years of the dataset.
 
+---
 
-\## Results
+## Evaluation Metrics
 
+The models were evaluated using:
 
+- Root Mean Squared Error (RMSE)
+- Mean Absolute Error (MAE)
+- R² Score (LSTM)
 
-| Model | RMSE |
+Forecasts were also visually compared with actual observations.
 
-|--------|------|
+---
 
-| SARIMAX | 3816.99 |
+## Technologies Used
 
-| Random Forest | 2951.93 |
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Statsmodels
+- Scikit-learn
+- TensorFlow
+- Keras
 
-| LSTM | 1791.27 |
+---
 
+## Saved Models
 
+The repository includes trained models:
 
-The LSTM model achieved the best forecasting performance among the evaluated models.
+- SARIMAX
+- Random Forest
+- LSTM
 
+These can be loaded without retraining.
 
+---
 
-\---
+## How to Run
 
+1. Clone this repository.
 
+```
+git clone <repository-url>
+```
 
-\## Author
+2. Install dependencies.
 
+```
+pip install -r requirements.txt
+```
 
+3. Download the hourly electricity load dataset.
 
-Harshitha Maruri
+4. Place the datasets inside the `data/` directory.
 
+5. Open and execute:
 
+```
+notebook/time_series_modelling_case_study.ipynb
+```
+
+---
+
+## Results
+
+The project demonstrates the application of:
+
+- Classical statistical forecasting
+- Machine learning
+- Deep learning
+
+for German electricity demand forecasting and compares their predictive performance using common evaluation metrics.
+
+---
+
+## Author
+
+**Harshitha Maruri**
 
 MSc Data Science
 
-
-
 University of Hertfordshire
 
+2026
+
+---
+
+## License
+
+This project is provided for academic purposes only.
