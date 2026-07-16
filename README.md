@@ -38,7 +38,10 @@ The project was completed as part of an MSc Data Science forecasting assignment.
 
 \## Dataset
 
+The hourly electricity dataset (time_series_60min_singleindex.csv) exceeds GitHub's web upload limit (25 MB) and is therefore not included in this repository.
 
+It can be downloaded from the Open Power System Data project:
+https://open-power-system-data.org/
 
 Electricity Load:
 
